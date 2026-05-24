@@ -427,22 +427,17 @@ def download():
 
         if d["status"] == "downloading":
 
-            downloaded =
-            d.get("downloaded_bytes",0)
+            downloaded = d.get("downloaded_bytes",0)
 
-            total =
-            d.get("total_bytes") or
-            d.get("total_bytes_estimate") or 1
+            total = d.get("total_bytes") or d.get("total_bytes_estimate") or 1
 
-            percent =
-            (downloaded / total) * 100
+            percent = (downloaded / total) * 100
 
             progress_data[download_id]["percent"] = percent
 
         elif d["status"] == "finished":
 
-            filename =
-            os.path.basename(d["filename"])
+            filename = os.path.basename(d["filename"])
 
             progress_data[download_id]["percent"] = 100
             progress_data[download_id]["status"] = "finished"
